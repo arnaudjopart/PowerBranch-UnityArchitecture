@@ -4,19 +4,19 @@ using UnityEngine;
 
 public interface ISelectionEffect
 {
-    void Select();
-    void Deselect();
+    void Select(Transform _transform);
+    void Deselect(Transform _transform);
 }
 
-public class SelectionEffect_Color : MonoBehaviour, ISelectionEffect
+public class SelectionEffect_Color : ISelectionEffect
 {
-    public void Select()
+    public void Select(Transform _transform)
     {
-        GetComponent<MeshRenderer>().material.color = Color.blue;
+        _transform.GetComponent<MeshRenderer>().material.color = Color.blue;
     }
         
-    public void Deselect()
+    public void Deselect(Transform _transform)
     {
-        GetComponent<MeshRenderer>().material.color = Color.green;
+        _transform.GetComponent<MeshRenderer>().material.color = Color.green;
     }
 }

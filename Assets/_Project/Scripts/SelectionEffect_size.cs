@@ -2,16 +2,16 @@ using UnityEngine;
 
 namespace _Project.Scripts
 {
-    public class SelectionEffect_size : MonoBehaviour, ISelectionEffect
+    public class SelectionEffect_size : ISelectionEffect
     {
-        public void Select()
+        public void Select(Transform _transform)
         {
-            transform.localScale *= 1.5f;
+            _transform.localScale *= 1.5f;
         }
         
-        public void Deselect()
+        public void Deselect(Transform _transform)
         {
-            transform.localScale = Vector3.one;
+            _transform.localScale = Vector3.one;
         }
     }
 }

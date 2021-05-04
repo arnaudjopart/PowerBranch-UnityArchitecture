@@ -1,22 +1,22 @@
 using System;
 using UnityEngine;
+using Zenject;
 
 namespace _Project.Scripts
 {
     public class SelectionDetector_NoSolid : MonoBehaviour
     {
+
         private ISelectionEffect m_selectionEffectSize;
+        public bool m_isColor;
 
-        private void Awake()
+        [Inject]
+        public void Init(ISelectionEffect _effect)
         {
-            m_selectionEffectSize = GetComponent<ISelectionEffect>();
+            m_selectionEffectSize = _effect;
         }
 
-        // Start is called before the first frame update
-        void Start()
-        {
         
-        }
 
         // Update is called once per frame
         void Update()
@@ -27,14 +27,14 @@ namespace _Project.Scripts
         private void OnMouseEnter()
         {
             print("OnMouseEnter");
-            m_selectionEffectSize.Select();
+            m_selectionEffectSize.Select(transform);
             
         }
 
         private void OnMouseExit()
         {
             print("OnMouseExit");
-            m_selectionEffectSize.Deselect();
+            m_selectionEffectSize.Deselect(transform);
             
         }
 
